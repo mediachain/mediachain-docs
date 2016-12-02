@@ -33,7 +33,7 @@ $ jq -c '.[]' Artists.json > Artists.ndjson
 ```
 
 ## Generating, validating, and publishing schemas
-Follow the instructions to install [schema-guru](https://github.com/mediachain/aleph/blob/master/docs/schema-generation.md), a tool that lets you automatically derive JSON schemas from a set of JSON instances. The [schema generation guide](https://github.com/mediachain/aleph/blob/master/docs/schema-generation.md) explains how the naming conventions work and the meaning of all the parameters.
+Follow the instructions to install [schema-guru][schema-generation], a tool that lets you automatically derive JSON schemas from a set of JSON instances. The [schema generation guide][schema-generation] explains how the naming conventions work and the meaning of all the parameters.
 
 Generate the schemas:
 
@@ -220,10 +220,11 @@ mcclient getData QmWwr4ZfeLJfbWNAuCQfefwo1aHtxC5yjyU8C5WG4DYrYe
 }
 ```
 
-There's the original object! You can interact with the rest of the data in the same way with MCQL, the Mediachain query language that is very similar to SQL. See the [README](https://github.com/mediachain/concat#basic-operations) for more query examples.
+There's the original object! You can interact with the rest of the data in the same way with
+[MCQL][mcql], the Mediachain query language that is very similar to SQL. See the [Basic Operations guide][basic-ops-query] for more query examples.
 
 ## Going public
-See the instructions [here](https://github.com/mediachain/concat#going-public) to configure your NAT, register your node with the directory, and bring it online so anyone can interact with it.
+See the [getting started guide][getting-started] to learn how to configure your NAT, register your node with the directory, and bring it online so anyone can interact with it.
 
 ## Conclusion
 If you published a new dataset after following this tutorial, reach out to us on [Slack](http://slack.mediachain.io) so we can merge it into the Museum Node with the rest of the museum data!
@@ -232,3 +233,6 @@ Open an issue if you have any questions or problems, or come for help in #suppor
 
 [install]: {{site.baseurl}}{% link _docs/setup/install.md %}
 [getting-started]: {{site.baseurl}}{% link _docs/setup/getting-started.md %}
+[schema-generation]: {{site.baseurl}}{% link _docs/publishing/schema-generation.md %}
+[mcql]: {{site.baseurl}}{% link _docs/arch/mcql.md %}
+[basic-ops-query]: {{site.baseurl}}{% link _docs/usage/basic-operations.md %}#query
