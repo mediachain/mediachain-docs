@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width">
+
+        <title>Mediachain : Configuring NAT Traversal</title>
+        <meta name="description" content="Docs for the Mediachain Project">
+
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/css/syntax.css">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="row">
+                <div id="header" class="col-sm-12">
+                    <h4><a class="brand" href="/">Mediachain</a>
+    <small>Docs for the Mediachain Project</small>
+</h4>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div id="navigation" class="col-sm-3">
+                    <ul class="nav nav-list">
+    
+      
+      
+      <h4>Installation and Setup</h4>
+      
+      
+        <li>
+          <a href="/install">Installing Mediachain</a>
+          
+        </li>
+      
+        <li>
+          <a href="/cloud-deploy">Using Mediachain Deploy</a>
+          
+        </li>
+      
+        <li>
+          <a href="/getting-started">Getting Started</a>
+          
+        </li>
+      
+        <li>
+          <a href="/nat">Configuring NAT Traversal</a>
+          
+            <div id="nav_current"></div>
+          
+        </li>
+      
+        <li>
+          <a href="/ssh-tunnel">Controlling a remote node with SSH Tunneling</a>
+          
+        </li>
+      
+    
+<!-- List additional links. It is recommended to add a divider
+    e.g. <li class="divider"></li> first to break up the content. -->
+</ul>
+
+                </div>
+
+                <div id="content" class="col-sm-9">
+                    <div class="page-header">
+    <h1>Configuring NAT Traversal
+        
+    </h1>
+</div>
+
+<p>To take your node public, the peer-to-peer interface must be reachable from
+the public internet.  If you’re behind a home router or other firewall, you’ll
+likely need to configure NAT traversal to make the p2p port accessible.</p>
+
+<p>The default <code>mcnode</code> p2p port is 9001, which we want to make available to the
+outside world.</p>
+
+<p>First, take the node offline because NAT config changes only take effect when the
+node goes online:
+<code>
+$ mcclient status offline
+</code></p>
+
+<p>If you are behind a home router which supports upnp port mapping, you can
+set your NAT configuration to “auto”:
+<code>
+$ mcclient config nat auto
+</code></p>
+
+<p>If you are behind multiple NATs or behind a firewall that doesn’t support port mapping
+(eg an AWS instance), then you need to manually configure your network to route traffic
+to the p2p port in your host.
+If you mapped the port transparently (so that the port numbers are the same inside and
+outside your local network), you can set your NAT configuration to “*”, which
+will automatically detect the IP address and advertise the locally bound port:
+<code>
+$ mcclient config nat "*"
+</code></p>
+
+<p>If you have mapped a different port to your host interface, then you need to specify
+it explicitly:
+<code>
+$ mcclient config nat "*:port"
+</code></p>
+
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div id="footer" class="col-sm-12">
+                    <a href="http://images.mediachain.io">Attribution Engine</a>
+<a class="pl12" href="http://slack.mediachain.io">Slack</a>
+<a href="https://github.com/mediachain">Github</a>
+<a href="https://blog.mediachain.io">Blog</a>
+<a href="https://twitter.com/mediachain_">Twitter</a>
+
+                </div>
+            </div>
+        </div>
+        
+
+        <script type="text/javascript">
+          $(function() {
+            var toc = $('#table_of_contents');
+            if (toc != null) {
+              $('#nav_current').append(toc);
+              toc.toggle(true);
+            }
+          })
+        </script>
+    </body>
+</html>

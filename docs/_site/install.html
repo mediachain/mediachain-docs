@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width">
+
+        <title>Mediachain : Installing Mediachain</title>
+        <meta name="description" content="Docs for the Mediachain Project">
+
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/css/syntax.css">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="row">
+                <div id="header" class="col-sm-12">
+                    <h4><a class="brand" href="/">Mediachain</a>
+    <small>Docs for the Mediachain Project</small>
+</h4>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div id="navigation" class="col-sm-3">
+                    <ul class="nav nav-list">
+    
+      
+      
+      <h4>Installation and Setup</h4>
+      
+      
+        <li>
+          <a href="/install">Installing Mediachain</a>
+          
+            <div id="nav_current"></div>
+          
+        </li>
+      
+        <li>
+          <a href="/cloud-deploy">Using Mediachain Deploy</a>
+          
+        </li>
+      
+        <li>
+          <a href="/getting-started">Getting Started</a>
+          
+        </li>
+      
+        <li>
+          <a href="/nat">Configuring NAT Traversal</a>
+          
+        </li>
+      
+        <li>
+          <a href="/ssh-tunnel">Controlling a remote node with SSH Tunneling</a>
+          
+        </li>
+      
+    
+<!-- List additional links. It is recommended to add a divider
+    e.g. <li class="divider"></li> first to break up the content. -->
+</ul>
+
+                </div>
+
+                <div id="content" class="col-sm-9">
+                    <div class="page-header">
+    <h1>Installing Mediachain
+        
+    </h1>
+</div>
+
+<ul id="table_of_contents">
+  <li><a href="#installing-concat">Installing concat</a></li>
+  <li><a href="#installing-aleph">Installing aleph</a>    <ul>
+      <li><a href="#dependencies">Dependencies</a>        <ul>
+          <li><a href="#linux">Linux</a></li>
+          <li><a href="#macos">macOS</a></li>
+          <li><a href="#windows">Windows</a></li>
+        </ul>
+      </li>
+      <li><a href="#installation">Installation</a></li>
+      <li><a href="#configure-mcclient">Configure <code>mcclient</code></a></li>
+      <li><a href="#usage">Usage</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Mediachain is comprised of two main software projects, <a href="https://github.com/mediachain/concat">concat</a> and <a href="https://github.com/mediachain/aleph">aleph</a>.
+If we were to split them along the popular “porcelain” / “plumbing” axis, aleph would be
+the porcelain to concat’s plumbing.  The storage, indexing and query of metadata is all
+handled by concat’s <code>mcnode</code> program, and the concat project also includes the reference
+directory server implementation <code>mcdir</code>.</p>
+
+<p>Controlling a running <code>mcnode</code> is done by issuing HTTP requests to an embedded server that
+listens on the <code>localhost</code> interface.  While it’s possible to control <code>mcnode</code> directly with <code>curl</code>
+or a similar tool, aleph’s <code>mcclient</code> tool is much friendlier and better suited to the job.</p>
+
+<p>The aleph project also includes an interactive REPL for querying a local or remote <code>mcnode</code>,
+which provides a flexible javascript environment for exploring the mediachain network.</p>
+
+<p>Which you should install depends on your goals.  If you want to control a node that you’ve
+<a href="cloud-deploy.md">deployed to the cloud</a>, all you need to do is <a href="#installing-aleph">install aleph</a>.</p>
+
+<p>If you want to run a node on your local machine, you should <a href="#installing-concat">install concat</a>, then
+<a href="#installing-aleph">install aleph</a>.</p>
+
+<p>Be sure to check out the <a href="/getting-started">Getting Started Guide</a> after installation to learn
+how to use mediachain to query, publish and share data with the network!</p>
+
+<h2 id="installing-concat">Installing concat</h2>
+
+<p>Concat’s <code>mcnode</code> program is the main mediachain node application, responsible for data storage,
+transmission, and query.  It can be easily <a href="cloud-deploy.md">installed to the cloud</a> with one click, but
+if you prefer to run it on your own hardware, the installation is straightforward.</p>
+
+<p>In most cases, a binary release will be the simplest way to get up and running. Find the <code>mcnode</code>
+package for your platform from <a href="https://github.com/mediachain/concat/releases/latest">the latest GitHub release page</a>.
+Linux packages will end with <code>-linux-amd64.tgz</code>, and macOS packages will end with <code>-darwin-amd64.tgz</code>.</p>
+
+<p>On Windows, we currently recommend installing the linux binaries under the Windows Subsystem for Linux.
+The concat README has <a href="https://github.com/mediachain/concat#running-on-windows">setup instructions</a>.</p>
+
+<p>To get the latest pre-release code, or if you want to run <code>mcnode</code> on a platform without a binary
+release (FreeBSD, Linux on ARM, etc), follow the instructions from concat’s README for
+<a href="https://github.com/mediachain/concat#installing-from-source">installing from source</a>.</p>
+
+<h2 id="installing-aleph">Installing aleph</h2>
+
+<h3 id="dependencies">Dependencies</h3>
+<p>The <code>aleph</code> project is written in javascript on the Node.js platform, and it requires node version
+6 or greater.  </p>
+
+<h4 id="linux">Linux</h4>
+
+<p>Linux users will need to have a modern c++ compiler installed to build the native dependencies.
+You’ll also need the development headers for openssl for the crypto libraries.
+On Ubuntu and other debian-based distros, you should be able to do:</p>
+
+<pre><code>$ sudo apt-get install build-essential g++ libssl-dev
+</code></pre>
+
+<h4 id="macos">macOS</h4>
+
+<p>Users on macOS will need the Xcode command line tools installed.  This can be done from within
+Xcode (under Preferences -&gt; Downloads), or
+<a href="http://railsapps.github.io/xcode-command-line-tools.html">as a standalone package</a>.</p>
+
+<h4 id="windows">Windows</h4>
+
+<p>We’re <a href="https://github.com/mediachain/aleph/issues/105">working on</a> “real” Windows support, but for
+now we recommend using the
+<a href="https://msdn.microsoft.com/en-us/commandline/wsl/install_guide">Windows Subsystem for Linux</a>,
+which creates a minimal Ubuntu system that runs under Windows 10 without virtualization. This supports
+native linux binaries, and will allow you to install the Linux versions of node.js, git, and other
+aleph dependencies.</p>
+
+<p>To install aleph’s dependencies on the Windows Subsystem for Linux:</p>
+
+<ul>
+  <li><a href="https://msdn.microsoft.com/en-us/commandline/wsl/install_guide">Enable the WSL</a></li>
+  <li>Open a command prompt or PowerShell, then run <code>bash</code>.  This may take a few minutes to prepare the
+linux root filesystem.  </li>
+</ul>
+
+<p>The following steps should be done from within bash:</p>
+
+<ul>
+  <li>Prepare the system to install node.js: <code>curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -</code></li>
+  <li>Install dependencies: <code>sudo apt-get install build-essential g++ libssl-dev git nodejs</code></li>
+</ul>
+
+<p>Now you should be able to install aleph within bash with the instructions below.</p>
+
+<h3 id="installation">Installation</h3>
+<p>The simplest way to get started is to globally install the latest release from npm:</p>
+
+<pre><code>$ npm install -g aleph
+</code></pre>
+
+<p>Depending on how node is installed on your system, you may need to run the above command with <code>sudo</code>
+or as a user with administrator privileges.  For other install methods, see
+<a href="https://github.com/mediachain/aleph/blob/master/README.md#installation">the aleph README</a>.</p>
+
+<p>Aleph provides an <code>mcclient</code> program for controlling a concat node, and an <code>aleph</code> command for
+running a lightweight javascript node.  In the instructions below, we’ll discuss using <code>mcclient</code> to
+control a concat node.  More information about the <code>aleph</code> command is available in
+<a href="https://github.com/mediachain/aleph/blob/master/README.md#aleph">the aleph README</a>.</p>
+
+<h3 id="configure-mcclient">Configure <code>mcclient</code></h3>
+
+<p>By default <code>mcclient</code> is configured to talk to <code>mcnode</code> at <code>http://localhost:9002</code>, which is the
+default address for the <code>mcnode</code> control API server.  If <code>mcnode</code> is running on your local machine
+(see <a href="#installing-mcnode">above</a> for instructions), you shouldn’t need to configure anything.</p>
+
+<p>If you’re controlling a node you’ve <a href="cloud-deploy.md">deployed to the cloud</a> or installed yourself on a
+remote machine, you need to first set up a secure “tunnel”, that will forward traffic from your
+local machine to the remote server.  See the <a href="/ssh-tunnel">SSH tunnel instructions</a> for more
+information on setting up the tunnel.  Once it’s running, you’ll be able to control your remote
+node as if it were running on your local machine.</p>
+
+<h3 id="usage">Usage</h3>
+
+<p>See the <a href="/getting-started">Getting Started Guide</a> to learn how to take your node online,
+run queries, publish data, and more.</p>
+
+
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div id="footer" class="col-sm-12">
+                    <a href="http://images.mediachain.io">Attribution Engine</a>
+<a class="pl12" href="http://slack.mediachain.io">Slack</a>
+<a href="https://github.com/mediachain">Github</a>
+<a href="https://blog.mediachain.io">Blog</a>
+<a href="https://twitter.com/mediachain_">Twitter</a>
+
+                </div>
+            </div>
+        </div>
+        
+
+        <script type="text/javascript">
+          $(function() {
+            var toc = $('#table_of_contents');
+            if (toc != null) {
+              $('#nav_current').append(toc);
+              toc.toggle(true);
+            }
+          })
+        </script>
+    </body>
+</html>
