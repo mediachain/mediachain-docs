@@ -5,6 +5,9 @@ category: publishing
 order: 10
 ---
 
+* TOC
+{:toc #table_of_contents}
+
 [schema-guru](https://github.com/snowplow/schema-guru) is a tool from Snowplow Analytics to automatically generate JSON schemas from a collection of JSON documents.  By using multiple input documents, it can generate schemas that can accomodate subtle differences in your data that might not be apparent from a single example.  For instance, if you have a field that is usually a string, but may occasionally be `null`, a single document will probably not be enough to determine that the field is nullable.
 
 ## Requirements & Setup

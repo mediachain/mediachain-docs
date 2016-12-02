@@ -5,6 +5,9 @@ category: usage
 order: 1000
 ---
 
+* TOC
+{:toc #table_of_contents}
+
 ## Datastore management
 
 ### Garbage Collection

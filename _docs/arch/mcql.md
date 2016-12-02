@@ -5,6 +5,9 @@ category: arch
 order: 10
 ---
 
+* TOC
+{:toc #table_of_contents}
+
 MCQL is a query language for retrieving statements from the node's statement db.
 It supports `SELECT` (and `DELETE`) statements with a syntax very similar to SQL, where
 namespaces play the role of tables.

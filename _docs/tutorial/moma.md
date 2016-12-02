@@ -4,6 +4,9 @@ layout: page
 category: tutorial
 ---
 
+* TOC
+{:toc #table_of_contents}
+
 ## Installing Mediachain
 Follow the [Install][install] and [Getting Started][getting-started] guides to get your local Mediachain node up and running.
 

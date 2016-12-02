@@ -4,6 +4,9 @@ layout: page
 category: arch
 ---
 
+* TOC
+{:toc #table_of_contents}
+
 The `mcnode` daemon stores data in two places, statement db and the datastore.
 
 The datastore contains the metadata per se, as CBOR objects (IPLD compatible to the best of our

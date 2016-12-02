@@ -5,6 +5,9 @@ category: tutorial
 order: 20
 ---
 
+* TOC
+{:toc #table_of_contents}
+
 ## Getting the raw data
 Cooper Hewitt has released their collection via a [data dump on Github](https://github.com/cooperhewitt/collection).
 
