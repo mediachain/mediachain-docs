@@ -82,12 +82,12 @@ When you link to another doc, you should use this (pretty terrible) bit of Liqui
 Assuming you want to link to `getting-started.md`:
 
 ```markdown
-Let's [get started]({{ site.baseurl }}{% link _docs/getting-started.md %})
+Let's [get started]({{ site.baseurl }}{% link _docs/setup/getting-started.md %})
 ```
 
-Inside the `{% link %}` helper, you need to prefix the filename with `_docs` and use the full
-name (with `.md` extension).  You also need the `{{ site.baseurl }}` bit before the helper to
-get the correct absolute url on the deployed site.
+Inside the `{% link %}` helper, you need to use the full path name from the repo root, including
+the `_docs` directory and `.md` extension. You also need the `{{ site.baseurl }}` bit before the
+helper to get the correct absolute url on the deployed site.
 
 ### Markdown quirks
 

@@ -22,8 +22,8 @@ run your node 24/7 for the first two months.
 
 Once the Deploy process is complete, make sure to click the button to "Save Your Credentials!"
 
-With [mcclient installed on your local computer]({{ site.baseurl }}{% link _docs/install.md %}#installing-aleph), you can use the
-credentials file to [set up a secure tunnel]({{ site.baseurl }}{% link _docs/ssh-tunnel.md %}) to the remote server and control it as
+With [mcclient installed on your local computer]({{ site.baseurl }}{% link _docs/setup/install.md %}#installing-aleph), you can use the
+credentials file to [set up a secure tunnel]({{ site.baseurl }}{% link _docs/setup/ssh-tunnel.md %}) to the remote server and control it as
 if it were running on your local machine:
 
 ```

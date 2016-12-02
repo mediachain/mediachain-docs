@@ -10,10 +10,10 @@ order: 5
 
 To control a [concat][concat] `mcnode` running on a remote machine, you can configure `mcclient` to
 automatically create a secure "tunnel" to the remote machine using SSH.   This document assumes that
-you have `mcclient` installed.  If not, see the [install instructions]({{ site.baseurl }}{% link _docs/install.md %}).
+you have `mcclient` installed.  If not, see the [install instructions]({{ site.baseurl }}{% link _docs/setup/install.md %}).
 
 All you need is a configuration file to let `mcclient` know how to reach your node and log in. If
-you used  [Mediachain Deploy]({{ site.baseurl }}{% link _docs/cloud-deploy.md %}) to create your server, the credentials file that you
+you used  [Mediachain Deploy]({{ site.baseurl }}{% link _docs/setup/cloud-deploy.md %}) to create your server, the credentials file that you
 downloaded at the end of the Deploy process can be used directly to set up the tunnel.
 Let's say you've saved the credentials file for a node with the IP address `67.205.161.186` to
 a `~/mediachain/mediachain_node_67.205.161.186.json`.  Just pass in that path with the `--sshConfig`

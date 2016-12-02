@@ -13,6 +13,7 @@ sections: [
     ['setup', 'Installation and Setup'],
     ['usage', 'Using Mediachain'],
     ['publishing', 'Publishing Data'],
+    ['tutorial', 'Tutorials'],
     ['arch', 'Mediachain Architecture']
 ]
 

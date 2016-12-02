@@ -37,12 +37,12 @@ QmZ6dckUhRouVr6AsBTpK6vMLVpcz1KAeJAJVQEZQ5gCek -- Metadata for CC images from fl
 To make your own node discoverable, see the [Going Public](#going-public) section below.
 
 ## Query
-You can query a mediachain node using [MCQL]({{site.baseurl}}{% link _docs/mcql.md %}), the
+You can query a mediachain node using [MCQL]({{site.baseurl}}{% link _docs/arch/mcql.md %}), the
 Mediachain Query Language.  MCQL is very similar to SQL, with mediachain namespaces taking
 place of SQL tables.
 
 Use the `mcclient query` command to send a query to your own node (either on your local
-machine or a remote server via an [ssh tunnel]({{site.baseurl}}{% link _docs/ssh-tunnel.md %})), or
+machine or a remote server via an [ssh tunnel]({{site.baseurl}}{% link _docs/setup/ssh-tunnel.md %})), or
 any remote peer that your node has discovered through the directory.
 
 Let's start with a remote query to a node run by Mediachain Labs, discovered in the `listPeers`
@@ -268,9 +268,9 @@ If you want to take your node back offline, you can simply do so with `status of
 $ mcclient status offline
 ```
 
-[install]: {{site.baseurl}}{% link _docs/install.md %}
-[nat]: {{ site.baseurl }}{% link _docs/nat.md %}
-[getting-started]: {{site.baseurl}}{% link _docs/getting-started.md %}
-[gs-config-dir]: {{site.baseurl}}{% link _docs/getting-started.md %}#configuring-the-directory
-[advanced-gc]: {{site.baseurl}}{% link _docs/advanced-operations.md %}#garbage-collection
-[arch-wki]: {{site.baseurl}}{% link _docs/statements-and-objects.md %}#well-known-identifiers
+[install]: {{site.baseurl}}{% link _docs/setup/install.md %}
+[nat]: {{ site.baseurl }}{% link _docs/setup/nat.md %}
+[getting-started]: {{site.baseurl}}{% link _docs/setup/getting-started.md %}
+[gs-config-dir]: {{site.baseurl}}{% link _docs/setup/getting-started.md %}#configuring-the-directory
+[advanced-gc]: {{site.baseurl}}{% link _docs/usage/advanced-operations.md %}#garbage-collection
+[arch-wki]: {{site.baseurl}}{% link _docs/arch/statements-and-objects.md %}#well-known-identifiers

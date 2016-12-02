@@ -27,7 +27,7 @@ Which you should install depends on your goals.  If you want to control a node t
 If you want to run a node on your local machine, you should [install concat](#installing-concat), then
 [install aleph](#installing-aleph).
 
-Be sure to check out the [Getting Started Guide]({{ site.baseurl }}{% link _docs/getting-started.md %}) after installation to learn
+Be sure to check out the [Getting Started Guide]({{ site.baseurl }}{% link _docs/setup/getting-started.md %}) after installation to learn
 how to use mediachain to query, publish and share data with the network!
 
 ## Installing concat
@@ -115,13 +115,13 @@ default address for the `mcnode` control API server.  If `mcnode` is running on 
 
 If you're controlling a node you've [deployed to the cloud][deploy] or installed yourself on a
 remote machine, you need to first set up a secure "tunnel", that will forward traffic from your
-local machine to the remote server.  See the [SSH tunnel instructions]({{ site.baseurl }}{% link _docs/ssh-tunnel.md %}) for more
+local machine to the remote server.  See the [SSH tunnel instructions]({{ site.baseurl }}{% link _docs/setup/ssh-tunnel.md %}) for more
 information on setting up the tunnel.  Once it's running, you'll be able to control your remote
 node as if it were running on your local machine.
 
 ### Usage
 
-See the [Getting Started Guide]({{ site.baseurl }}{% link _docs/getting-started.md %}) to learn how to take your node online,
+See the [Getting Started Guide]({{ site.baseurl }}{% link _docs/setup/getting-started.md %}) to learn how to take your node online,
 run queries, publish data, and more.
 
 [concat]: https://github.com/mediachain/concat

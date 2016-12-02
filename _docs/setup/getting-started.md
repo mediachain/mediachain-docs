@@ -9,13 +9,13 @@ order: 3
 {:toc #table_of_contents}
 
 Welcome to Mediachain! This guide will help you get started with a newly-installed mediachain node.
-For help with installation, please check out the [Installation Guide]({{ site.baseurl }}{% link _docs/install.md %}), then come back
+For help with installation, please check out the [Installation Guide]({{ site.baseurl }}{% link _docs/setup/install.md %}), then come back
 here.
 
 This guide will assume that you've installed `mcnode` and `mcclient` on your local computer, and
 you want to get your node ready to use.  If you've [deployed your node
-to the cloud]({{ site.baseurl }}{% link _docs/cloud-deploy.md%}), everything will work just the same, but you'll need to
-[set up an SSH tunnel to control your node]({{ site.baseurl }}{% link _docs/ssh-tunnel.md%}).
+to the cloud]({{ site.baseurl }}{% link _docs/setup/cloud-deploy.md%}), everything will work just the same, but you'll need to
+[set up an SSH tunnel to control your node]({{ site.baseurl }}{% link _docs/setup/ssh-tunnel.md%}).
 
 ## Starting a new node
 Let's start our node!
@@ -42,7 +42,7 @@ root directory, but you can change this using the `-d path/to/mcnode/home` comma
 By default, the node starts disconnected from the p2p network and provides a client control
 api in localhost.
 You can control and use your node through the api using curl, but it is recommended
-to [install Aleph]({{ site.baseurl }}{% link _docs/install.md %}#installing-aleph).
+to [install Aleph]({{ site.baseurl }}{% link _docs/setup/install.md %}#installing-aleph).
 Aleph provides a fully featured client for `mcnode` named `mcclient` and we use it in
 the examples below.
 
@@ -132,8 +132,8 @@ See the [Basic Operations guide][basic-ops] to learn how to [query][basic-ops-qu
 
 [multiaddr]: https://github.com/multiformats/multiaddr
 [multihash]: https://github.com/multiformats/multihash
-[basic-ops]: {{site.baseurl}}{% link _docs/basic-operations.md %}
-[basic-ops-query]: {{site.baseurl}}{% link _docs/basic-operations.md %}#query
-[basic-ops-publish]: {{site.baseurl}}{% link _docs/basic-operations.md %}#publishing-statements
-[basic-ops-merge]: {{site.baseurl}}{% link _docs/basic-operations.md %}#merge
-[basic-ops-public]: {{site.baseurl}}{% link _docs/basic-operations.md %}#going-public
+[basic-ops]: {{site.baseurl}}{% link _docs/usage/basic-operations.md %}
+[basic-ops-query]: {{site.baseurl}}{% link _docs/usage/basic-operations.md %}#query
+[basic-ops-publish]: {{site.baseurl}}{% link _docs/usage/basic-operations.md %}#publishing-statements
+[basic-ops-merge]: {{site.baseurl}}{% link _docs/usage/basic-operations.md %}#merge
+[basic-ops-public]: {{site.baseurl}}{% link _docs/usage/basic-operations.md %}#going-public
