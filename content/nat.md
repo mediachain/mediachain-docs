@@ -14,12 +14,14 @@ outside world.
 
 First, take the node offline because NAT config changes only take effect when the
 node goes online:
+
 ```
 $ mcclient status offline
 ```
 
 If you are behind a home router which supports upnp port mapping, you can
 set your NAT configuration to "auto":
+
 ```
 $ mcclient config nat auto
 ```
@@ -30,12 +32,14 @@ to the p2p port in your host.
 If you mapped the port transparently (so that the port numbers are the same inside and
 outside your local network), you can set your NAT configuration to "*", which
 will automatically detect the IP address and advertise the locally bound port:
+
 ```
 $ mcclient config nat "*"
 ```
 
 If you have mapped a different port to your host interface, then you need to specify
 it explicitly:
+
 ```
 $ mcclient config nat "*:port"
 ```
