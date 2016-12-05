@@ -1,6 +1,6 @@
 # Site title and subtitle. This is used in _includes/header.html
 title: 'Mediachain'
-subtitle: 'Docs for the Mediachain Project'
+subtitle: '- an open, universal media library'
 
 # if you use google analytics, add your tracking id here
 google_analytics_id: ''
