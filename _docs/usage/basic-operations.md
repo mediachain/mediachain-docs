@@ -160,6 +160,12 @@ $ mcclient data get Qma1LUdw5PAjfuZLXCbT5Qm5xnQFLkEejyXbLuvcKinF8K
 
 ```
 
+## Push
+
+Pushing data from your node to another node is slightly more involved, since the remote node
+needs to authorize you to do so first.  See the [push publication guide][push-guide] to see
+how it works.
+
 ## Delete
 
 If you decide you no longer want to keep the statements you merged in your local store,
@@ -274,3 +280,4 @@ $ mcclient status offline
 [gs-config-dir]: {{site.baseurl}}{% link _docs/setup/getting-started.md %}#configuring-the-directory
 [advanced-gc]: {{site.baseurl}}{% link _docs/usage/advanced-operations.md %}#garbage-collection
 [arch-wki]: {{site.baseurl}}{% link _docs/arch/statements-and-objects.md %}#well-known-identifiers
+[push-guide]: {{site.baseurl}}{% link _docs/usage/push.md %}
