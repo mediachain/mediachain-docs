@@ -60,6 +60,11 @@ statements during publication, and is distinct from the key used to derive the [
 Typically represented as a [base 58][base58] string.
 
 #### Statement
+The main "unit of publication" within a mediachain node.  A statement contains a signed "body",
+which is most often a multihash reference to a [data object](#data-object). In addition to the
+body, the statement "envelope" contains  the namespace  the statement belongs to, the identity of
+the publisher, links to related statements, the publication timestamp, and other contextual
+information.
 
 
 [rocksdb]: https://github.com/facebook/rocksdb
