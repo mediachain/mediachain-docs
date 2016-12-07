@@ -1,3 +1,5 @@
+VISIT THE HOSTED SITE: https://mediachain.github.io/mediachain-docs 
+----
 # Mediachain Documentation site
 
 This repo contains the system-level documentation for the
