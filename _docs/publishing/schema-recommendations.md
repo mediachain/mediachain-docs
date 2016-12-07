@@ -147,11 +147,130 @@ root_object should have required property 'lastName': {"missingProperty":"lastNa
 }
 ```
 
+## Using JSON-LD
 
+[JSON-LD][jsonld] is a linked data format that uses JSON to represent objects, their properties,
+and links between related objects.  We recommend using JSON-LD to represent "green field" or
+"mediachain native" data because it offers great flexibility, and there are a lot of existing
+type definitions that your data can extend.  The [schema.org project](http://schema.org) has a
+great collection of types that you can either use directly, or extend for your own purposes.
+By using well-known types, your data is much more easily understood and indexed by other
+mediachain apps and users.
+
+### Data Model
+"Linked Data" is a term that emerged out of the [semantic web][semantic-web-wiki] movement, and it
+has taken many forms over the years.  JSON-LD uses a data model that's compatible with
+[RDF][rdf], one of the most widely used linked data formats.  
+
+The RDF and JSON-LD data model represents data as a graph of connected objects, where each object is
+identified with a unique ID.  In most semantic web contexts, the unique id is a URI, and it's often
+a URL that can be resolved to some kind of definition.  For example, the URL
+[http://schema.org/Person](http://schema.org/Person) uniquely identifies the `Person` type, and if
+you view the HTML source returned by that URL, you can see some special markup that embeds property
+definitions into the page.  See the section below on [identifiers](#identifiers) for guidance on
+defining ids for mediachain objects.
+
+An RDF object is actually a graph connecting a set of properties to the object's identifier, but
+JSON-LD lets us represent this very open-ended graph using familiar JSON conventions.
+
+This `Person` example from the [JSON-LD Playground][jsonld-playground] shows how to define a
+JSON-LD object:
+
+```json
+{
+  "@context": "http://schema.org/",
+  "@type": "Person",
+  "name": "Jane Doe",
+  "jobTitle": "Professor",
+  "telephone": "(425) 123-4567",
+  "url": "http://www.janedoe.com"
+}
+```
+
+There are a few key things to notice in that example.
+
+First, the `@context` tells the JSON-LD processor where to find definitions for object and property
+types.  Using `"@context": "http://schema.org"` gives meaning to the fields below; without the
+`@context`, the fields `name`, `telephone`, etc have no intrinsic meaning.  With the context,
+they have the meaning defined by schema.org.
+
+The `@type` field defines the type of object, in this case a [Person](http://schema.org/Person).
+While it's technically possible to define any properties you want on any type of object, using the
+properties that "belong" to the type of object that you're representing will give you the best
+interoperability with other systems, and make your data easier to index.
+
+The schema.org types are arranged in an inheritance hierarchy, and properties from base types are
+availble to sub-types.  [Person](http://schema.org/Person) is derived from [Thing](http://schema.org/Thing),
+which is where the [`name`](http://schema.org/name) property is inherited from.
+
+You may have noticed that type names (`Person`, `Thing`, etc) begin with a capital letter, while
+property names begin with lowercase letters.  This is a convention used throughout the schema.org
+definitions, and we recommend using it when defining your own types as well.
+
+### Identifiers
+
+Mediachain stores data in a content addressed object store, which presents a bit of a
+"chicken and egg" problem for unique IDs.  It's tempting to try to identify objects solely by the
+hash of their contents, which is in fact how mediachain references objects in its datastore.
+
+However, mediachain also uses a database of [statements][glossary-statement] to index and
+contextualize the data store, and statements can use "well-known identifiers" (or WKIs) to identify
+what a given object is "about".  This gives us a way to model objects from existing data sources,
+e.g. we can point to an object from the MoMA collection with the WKI `moma:artworks:11` if we
+want to refer to [a specific MoMA artwork](https://www.moma.org/collection/works/11).
+
+In the case of objects without an existing external ID, we can generate our own to allow us to
+track the object in the statement db, and give us the ability to model updates to the object
+over time.
+
+We intend to add unique "shared nothing" id generation to an upcoming release of `mcclient`, but
+our current recommendation is to simply use UUIDs for each object you create.  An object's id
+can be embedded in the object definition with the `@id` field:
+
+```json
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "@id": "uuid:56D1A4AB-8574-48EC-B419-1AACB58A7A82",
+  "name": "Roald Dahl"
+}
+```
+
+Using the `@id` field, we can also link between related objects.
+
+```json
+{
+  "@context": "http://schema.org",
+  "@type": "Book",
+  "@id": "uuid:558BE88C-7933-4B9B-8B31-FD6B3E50706F",
+  "title": "Charlie and the Chocolate Factory",
+  "author": "uuid:56D1A4AB-8574-48EC-B419-1AACB58A7A82"
+}
+```
+
+### Publishing JSON-LD Objects
+
+Validation of JSON-LD data is an ongoing effort; we're planning to provide semantic validation of
+object and property types in an upcoming release.  At the moment, you can validate *structurally*
+using the `mcclient validate --jsonld` command, which will ensure that your data is valid JSON-LD,
+but not necessarily that your types are correct.
+
+Publishing JSON-LD data is just like publishing any other JSON data:
+
+```
+$ mcclient publish --idFilter '.["@id"]' --namespace scratch.mydata mydata.json
+```
+
+As we add more tools for validating and publishing JSON-LD, the publication flow may change somewhat!
+Please check back here for the latest usage instructions and recommendations.
 
 [ipld]: https://github.com/ipld/specs/tree/master/ipld
 [schema-generation]: {{ site.baseurl }}{% link _docs/publishing/schema-generation.md %}
 [self-desc-schema]: https://github.com/snowplow/iglu/wiki/Self-describing-JSON-Schemas
-[jsonld]: http://json-ld.org/
 [schemaver]: https://github.com/snowplow/iglu/wiki/SchemaVer
 [snowplow]: http://snowplowanalytics.com/
+[jsonld]: http://json-ld.org/
+[jsonld-playground]: http://json-ld.org/playground/
+[rdf]: https://en.wikipedia.org/wiki/Resource_Description_Framework
+[semantic-web-wiki]: https://en.wikipedia.org/wiki/Semantic_Web
+[glossary-statement]: {{ site.baseurl }}{% link _docs/arch/glossary.md %}#statement
