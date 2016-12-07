@@ -97,20 +97,18 @@ empty line.
 
 So this won't render correctly:
 
-
-        Here's a code snippet that will look terrible:
-        ```
-        boo();
-        ```
+    Here's a code snippet that will look terrible:
+    ```
+    boo();
+    ```
 
 But this will:
 
-
-        This one works thanks to the empty line after the paragraph:
-        
-        ```
-        hooray();
-        ```
+    This one works thanks to the empty line after the paragraph:
+    
+    ```
+    hooray();
+    ```
 
 ## Changing site layout, styles, etc
 
