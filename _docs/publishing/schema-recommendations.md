@@ -157,6 +157,10 @@ great collection of types that you can either use directly, or extend for your o
 By using well-known types, your data is much more easily understood and indexed by other
 mediachain apps and users.
 
+If you want to represent data specifically about licensing and IP rights,
+[COALA](https://github.com/COALAIP/specs) is an excellent, industry-standard choice based on
+JSON-LD.
+
 ### Data Model
 "Linked Data" is a term that emerged out of the [semantic web][semantic-web-wiki] movement, and it
 has taken many forms over the years.  JSON-LD uses a data model that's compatible with
