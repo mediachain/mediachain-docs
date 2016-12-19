@@ -42,7 +42,7 @@ The `category` field groups docs in the navigation menu by category.  This is a 
 although we may end up adding a default category at some point.
 
 Right now there's only one category, `setup`, which shows up in the nav menu as
-"Installation and Setup".  This is defined in [`docs/_config.yml`](./docs/_config.yml) as the
+"Installation and Setup".  This is defined in [`_config.yml`](./_config.yml) as the
 `sections` array:
 
 ```
