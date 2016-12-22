@@ -20,7 +20,7 @@ Mediachain is the decentralized, global database.
 
 It provides a singular data fabric for a new generation of open-first media applications.
 
-Mediachain functions like a traditional database, but is a global, decentralized system.
+Mediachain serves the role of a traditional database, but is a global, decentralized system.
 
 It is a single port of entry for applications and users to publish, discover, and collaborate on media metadata.
 
