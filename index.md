@@ -32,6 +32,7 @@ By relaxing requirements of global consensus to establish ordering and prevent d
 
 ## What is the design philosophy behind Mediachain?
 Mediachain makes the following assumptions:
+
 - Because double spends aren’t relevant to metadata, global consensus is not necessary or meaningful
 - Data can be sharded by topic or application into “namespaces”
 - While certain statements have a causal/temporal relationship, there is no inherent total ordering for a majority of the statements
