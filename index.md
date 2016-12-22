@@ -16,7 +16,21 @@ set up and ready to use. Using mediachain to [query peers][basic-ops-query], [pu
 [merge remote data][basic-ops-merge] and more are covered in the [Basic Operations Guide][basic-ops].
 
 ## What is Mediachain?
-Mediachain is a tool for securely storing and distributing data between peers in a decentralized network. It is focused on efficiency and data integrity, and enables indexing, discovery, aggregation, querying and extension of data from multiple participants without requiring explicit coordination between parties.
+Mediachain is the decentralized, global database.
+
+It provides a singular data fabric for a new generation of open-first media applications.
+
+Mediachain functions like a traditional database, but is a global, decentralized system.
+
+It is a single port of entry for applications and users to publish, discover, and collaborate on media metadata.
+
+With Mediachain, a group of museums can collaborate on [cultural heritage data](https://blog.mediachain.io/bringing-cultural-metadata-to-life-12cc118b2298) in a shared system, a cooperative of openly-licensed image sharing platforms can publish [attribution information](https://blog.mediachain.io/introducing-mediachain-attribution-engine-2dc1ea6aa31f) to a community-maintained ledger, a consortium of music industry organizations can share [rights data](https://blog.mediachain.io/what-a-blockchain-for-music-really-means-e2f8dc66d57d#.g5kmvz3jh) without ceding control to a third party, and a developer can build a decentralized blogging platform without needing to run a centralized database.
+
+Mediachain complements emerging technologies in the decentralized application protocol stack, where Ethereum is the logic layer, IPFS is the file system, and Mediachain is the database.
+
+Unlike traditional DHT and blockchain-based systems, Mediachain scales efficiently when publishing billions of small records, and can accommodate use-cases like archiving high cardinality datasets or building internet-scale decentralized media applications.
+
+In short, Mediachain lets developers build dynamic, social, and collaborative applications like the ones that defined Web 2.0, but in a completely decentralized way. With Mediachain, participants are in control of their identity and their data, and value is exchanged without intermediaries.
 
 ## Why is Mediachain useful?
 Mediachain creates a single logical space, organized by topic or application, for multiple participants to publish and discover data without a central point of control or failure.
