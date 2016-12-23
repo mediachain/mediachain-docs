@@ -87,6 +87,7 @@ For developers looking to reuse data in the Mediachain, this means they have a s
 Participants can manually poll namespaces to synchronize data or subscribe for real-time notifications via pubsub.
 
 ## Case studies
+
 ### Shared cultural heritage
 ![image alt](https://cdn-images-1.medium.com/max/1600/1*ru1HtO5OfLm3HbJQ-LTjrA.jpeg)
 Mediachain lowers the cost of participating in open access for institutions like museums and libraries, fostering a vibrant community of like minded contributors by offering a common technological framework without needing to build a proprietary system or requiring a third party custodian.
