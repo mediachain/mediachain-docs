@@ -10,6 +10,7 @@ codeurl: 'https://mediachain.io'
 
 # Default categories (in order) to appear in the navigation
 sections: [
+    ['about', 'Mediachain'],
     ['setup', 'Installation and Setup'],
     ['usage', 'Using Mediachain'],
     ['publishing', 'Publishing Data'],
