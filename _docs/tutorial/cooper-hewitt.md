@@ -1,5 +1,5 @@
 ---
-title: Cooper Hewitt 🎨 Mediachain
+title: Ingesting Museum Data (Cooper Hewitt)
 layout: page
 category: tutorial
 order: 20
@@ -7,6 +7,10 @@ order: 20
 
 * TOC
 {:toc #table_of_contents}
+
+This tutorial explains how to ingest metadata from the Cooper Hewitt collection to Mediachain.
+
+You'll learn how to set up your Mediachain node, download and process the object metadata from Cooper Hewitt's GitHub, generate the appropriate schemas, publish the data to your node, read it back, and make it publicly available in the decentralized network.
 
 ## Getting the raw data
 Cooper Hewitt has released their collection via a [data dump on Github](https://github.com/cooperhewitt/collection).

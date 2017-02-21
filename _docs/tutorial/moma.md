@@ -1,11 +1,15 @@
 ---
-title: MoMA 🎨 Mediachain
+title: Ingesting Museum Data (MoMA)
 layout: page
 category: tutorial
 ---
 
 * TOC
 {:toc #table_of_contents}
+
+This tutorial explains how to ingest metadata from the Museum of Modern Art collection to Mediachain. 
+
+You'll learn how to set up your Mediachain node, download and process the artwork and artist metadata from MoMA's GitHub, generate the appropriate schemas, publish the data to your node, read it back, and make it available to world in the decentralized network.
 
 ## Installing Mediachain
 Follow the [Install][install] and [Getting Started][getting-started] guides to get your local Mediachain node up and running.
