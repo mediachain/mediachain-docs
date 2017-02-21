@@ -30,6 +30,10 @@ Unlike traditional DHT and blockchain-based systems, Mediachain scales efficient
 
 In short, Mediachain lets developers build dynamic, social, and collaborative applications like the ones that defined Web 2.0, but in a completely decentralized way. With Mediachain, participants are in control of their identity and their data, and value is exchanged without intermediaries.
 
+## How it works
+
+![](https://github.com/mediachain/mediachain-docs/raw/master/images/mc-stack.png)
+
 [mediachain-io]: https://www.mediachain.io
 [install]: {{site.baseurl}}{% link _docs/setup/install.md %}
 [cloud-deploy]: {{site.baseurl}}{% link _docs/setup/cloud-deploy.md %}
