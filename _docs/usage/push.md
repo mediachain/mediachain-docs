@@ -47,7 +47,7 @@ Now we can see that peer in the authoriazation list:
 $ mcclient auth show
 {
   "QmXY1nyb6sbXgdAjEjDHcqXfpmmwjhj3S1KPSu94grp1xo": [
-    "*",
+    "museums.*",
   ]
 }
 ```
@@ -55,8 +55,7 @@ $ mcclient auth show
 If we need to be more granular, we can list namespaces individually:
 
 ```
-mcclient auth grant QmXY1nyb6sbXgdAjEjDHcqXfpmmwjhj3S1KPSu94grp1xo museums.moma.artists museums.moma.artworks
-Granted authorizations for peer QmXY1nyb6sbXgdAjEjDHcqXfpmmwjhj3S1KPSu94grp1xo:
+$ mcclient auth grant QmXY1nyb6sbXgdAjEjDHcqXfpmmwjhj3S1KPSu94grp1xo museums.moma.artists museums.moma.artworks
 Granted authorizations for peer QmXY1nyb6sbXgdAjEjDHcqXfpmmwjhj3S1KPSu94grp1xo:
 [
   "museums.moma.artists",
