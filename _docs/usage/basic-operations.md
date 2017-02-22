@@ -53,25 +53,34 @@ sample from the `images.dpla` namespace:
 
 ```
 $ mcclient query -r QmeiY2eHMwK92Zt6X4kUUC3MsjMmVb2VnGZ17DhnhRPCEQ "SELECT namespace FROM *"
-'images.500px'
-'images.dpla'
-'images.pexels'
+"images.500px"
+"images.dpla"
+"images.pexels"
+"mediachain.schemas"
 
 $ mcclient query -r QmeiY2eHMwK92Zt6X4kUUC3MsjMmVb2VnGZ17DhnhRPCEQ "SELECT COUNT(*) FROM images.dpla"
 3738109
 
 $ mcclient query -r QmeiY2eHMwK92Zt6X4kUUC3MsjMmVb2VnGZ17DhnhRPCEQ "SELECT * FROM images.dpla LIMIT 5"
-{ id: '4XTTM4K8sqTb7xYviJJcRDJ5W6TpQxMoJ7GtBstTALgh5wzGm:1476970964:0',
-  publisher: '4XTTM4K8sqTb7xYviJJcRDJ5W6TpQxMoJ7GtBstTALgh5wzGm',
-  namespace: 'images.dpla',
-  body:
-   { Body:
-      { Simple:
-         { object: 'Qma1LUdw5PAjfuZLXCbT5Qm5xnQFLkEejyXbLuvcKinF8K',
-           refs: [ 'dpla_1349ede833fa9417b6f55be6bb402f6d' ] } } },
-  timestamp: 1476970964,
-  signature: 'mZMSMdMrahd40uyJChHAFLMvB5diR8qh9QI2kw0XUR7HxTo6sh2jtCzHZVBaKnOa7w9QkSrPdEU8qqfAsBEiDA==' }
-...  
+{
+  "id": "4XTTM4K8sqTb7xYviJJcRDJ5W6TpQxMoJ7GtBstTALgh5wzGm:1478267497:1",
+  "publisher": "4XTTM4K8sqTb7xYviJJcRDJ5W6TpQxMoJ7GtBstTALgh5wzGm",
+  "namespace": "images.dpla",
+  "body": {
+    "simple": {
+      "object": "QmeFJSTPKSEiNqebxZvYcduWH8UBmxqNq724gHEQnxV5D1",
+      "refs": [
+        "dpla_1ff6b36174426026847c8f8ca216ffa9"
+      ],
+      "deps": [
+        "QmYGRQYmWC3BAtTAi88mFb7GVeFsUKGM4nm25SBUB9vfc9"
+      ]
+    }
+  },
+  "timestamp": "1478267497",
+  "signature": "yDhPpc/RIkW3+sHjl/cB00j3jurqMsDdb/tUyVMUfa6I4EnNiYdSqasxWTiRGtsaT2M/xX++RgRNQQ/97x8IDA=="
+}
+...
 ```
 
 ### Query by Well-Known Identifier
@@ -84,8 +93,10 @@ ask for just statements for that one identifier with a `WHERE` clause:
 
 ```
 $ mcclient query -r QmeiY2eHMwK92Zt6X4kUUC3MsjMmVb2VnGZ17DhnhRPCEQ "SELECT * FROM images.dpla WHERE wki = dpla_1349ede833fa9417b6f55be6bb402f6d"
-{ id: '4XTTM4K8sqTb7xYviJJcRDJ5W6TpQxMoJ7GtBstTALgh5wzGm:1476970964:0',
-  ... }
+{
+  "id": "4XTTM4K8sqTb7xYviJJcRDJ5W6TpQxMoJ7GtBstTALgh5wzGm:1478267498:2147",
+  ...
+}
 ```
 
 ## Merge
@@ -102,62 +113,70 @@ The statements and the associated metadata our now stored in the local node:
 
 ```
 $ mcclient query "SELECT * FROM images.dpla"
-{ id: '4XTTM4K8sqTb7xYviJJcRDJ5W6TpQxMoJ7GtBstTALgh5wzGm:1476970964:0',
-  publisher: '4XTTM4K8sqTb7xYviJJcRDJ5W6TpQxMoJ7GtBstTALgh5wzGm',
-  namespace: 'images.dpla',
-  body:
-   { Body:
-      { Simple:
-         { object: 'Qma1LUdw5PAjfuZLXCbT5Qm5xnQFLkEejyXbLuvcKinF8K',
-           refs: [ 'dpla_1349ede833fa9417b6f55be6bb402f6d' ] } } },
-  timestamp: 1476970964,
-  signature: 'mZMSMdMrahd40uyJChHAFLMvB5diR8qh9QI2kw0XUR7HxTo6sh2jtCzHZVBaKnOa7w9QkSrPdEU8qqfAsBEiDA==' }
+{
+  "id": "4XTTM4K8sqTb7xYviJJcRDJ5W6TpQxMoJ7GtBstTALgh5wzGm:1478267497:1",
+  "publisher": "4XTTM4K8sqTb7xYviJJcRDJ5W6TpQxMoJ7GtBstTALgh5wzGm",
+  "namespace": "images.dpla",
+  "body": {
+    "simple": {
+      "object": "QmeFJSTPKSEiNqebxZvYcduWH8UBmxqNq724gHEQnxV5D1",
+      "refs": [
+        "dpla_1ff6b36174426026847c8f8ca216ffa9"
+      ],
+      "deps": [
+        "QmYGRQYmWC3BAtTAi88mFb7GVeFsUKGM4nm25SBUB9vfc9"
+      ]
+    }
+  },
+  "timestamp": "1478267497",
+  "signature": "yDhPpc/RIkW3+sHjl/cB00j3jurqMsDdb/tUyVMUfa6I4EnNiYdSqasxWTiRGtsaT2M/xX++RgRNQQ/97x8IDA=="
+}
 ...
+```
 
 The following `data get` command is targeting our local node, not the remote peer.  Since the
 `object` (referenced in the statement above) was successfully merged in, we get the data we want:
 
+```
 $ mcclient data get Qma1LUdw5PAjfuZLXCbT5Qm5xnQFLkEejyXbLuvcKinF8K
-{ orientation: null,
-  dedupe_hsh: '4e0783f1e8f41bac',
-  licenses: [ { details: null } ],
-  native_id: 'dpla_http://dp.la/api/items/1349ede833fa9417b6f55be6bb402f6d',
-  keywords: [],
-  date_created_original: null,
-  title: [ 'Page 91' ],
-  camera_exif: {},
-  source: { url: 'https://dp.la/', name: 'dpla' },
-  transient_info: { score_hotnessviews: null, likes: null },
-  date_captured: null,
-  location: { lat_lon: null, place_name: [] },
-  attribution: null,
-  description: 'kada',
-  source_tags: [ 'dp.la' ],
-  date_created_at_source: null,
-  providers_list:
-   [ { name: 'dpla' },
-     { name: 'University of Southern California. Libraries' } ],
-  date_source_version: null,
-  sizes:
-   [ { bytes: null,
-       height: 120,
-       uri_external: 'http://digitallibrary.usc.edu/utils/getthumbnail/collection/p15799coll126/id/7763',
-       width: 66,
-       content_type: 'image/jpeg',
-       dpi: null } ],
-  source_dataset: 'dpla',
-  artist_names: [],
-  url_direct: { url: 'http://digitallibrary.usc.edu/utils/getthumbnail/collection/p15799coll126/id/7763' },
-  derived_qualities:
-   { medium: null,
-     predicted_tags: null,
-     has_people: null,
-     colors: null,
-     general_type: null,
-     time_period: null },
-  url_shown_at: { url: 'http://digitallibrary.usc.edu/cdm/ref/collection/p15799coll126/id/7763' },
-  aspect_ratio: 0.55 }
-
+{
+  "schema": {
+    "/": "QmYGRQYmWC3BAtTAi88mFb7GVeFsUKGM4nm25SBUB9vfc9"
+  },
+  "data": {
+    "artist_names": [
+      [
+        "Meredith L. Clausen"
+      ]
+    ],
+    "aspect_ratio": 0.7166666666666667,
+    "attribution": [
+      {
+        "name": "Meredith L. Clausen"
+      }
+    ],
+    "camera_exif": {},
+    "date_captured": null,
+    "date_created_at_source": null,
+    "date_created_original": null,
+    "date_source_version": null,
+    "dedupe_hsh": "3fdfefe0f8381403",
+    "derived_qualities": {
+      "colors": null,
+      "general_type": null,
+      "has_people": null,
+      "medium": null,
+      "predicted_tags": null,
+      "time_period": null
+    },
+    "description": "Clausen/Donnelly House",
+    "keywords": [],
+    "licenses": [
+      {
+        "details": "Meredith L. Clausen"
+      }
+    ],
+...
 ```
 
 ## Push
@@ -197,44 +216,80 @@ you want to publish.
 For example, let's publish hello world in a couple different variations:
 
 ```
-$ cat /tmp/hello.json
-{"id": "hello_1", "hello": "world"}
-{"id": "hello_2", "hola": "mundo"}
-$ mcclient publish --idFilter '.id' scratch.hello /tmp/hello.json
-statement id: 4XTTMADSKQUN3jkeZngbtuE35w9y5YnDTicVTeeji7N2Npkey:1477063161:0 -- body: QmZDxgNgUT1J3rgjvnGjoxoA5efGNSN9Qvhq4FpvefmwnA -- refs: ["hello_1"]
-statement id: 4XTTMADSKQUN3jkeZngbtuE35w9y5YnDTicVTeeji7N2Npkey:1477063161:1 -- body: QmcdACgobENfs7vuD2CpQGi8RdEkNyAmbmyqVvrA7Z57xu -- refs: ["hello_2"]
+$ cat /tmp/hello.ndjson
+{"id": "1", "hello": "world"}
+{"id": "2", "hola": "mundo"}
+```
+```
+$ mcclient publish --idFilter '.id' --namespace scratch.hello --prefix hello hello.ndjson
+
+statement id: 4XTTMBHnnQ6fW6tFWZHyz5hmypFqm7myypesDgYfDseumD6js:1487797726:2
+[
+  {
+    "object": "QmQQxyUTyuvrbnCqZSvHrkABsyV2ZMRcbGzLmMriFeLgJb",
+    "refs": [
+      "hello:1"
+    ],
+    "tags": [],
+    "deps": []
+  }
+]
+
+statement id: 4XTTMBHnnQ6fW6tFWZHyz5hmypFqm7myypesDgYfDseumD6js:1487797726:3
+[
+  {
+    "object": "QmNS1u2hKJbU7ddJiELYSvqZzWsGhb5n8ZAGVovTUUkZ5v",
+    "refs": [
+      "hello:2"
+    ],
+    "tags": [],
+    "deps": []
+  }
+]
 All statements published successfully
 ```
 
-The `--idFilter` flag above is used to extract a
-
 The statements and the metadata are now stored by the local node:
-
 ```
 $ mcclient query 'SELECT * FROM scratch.hello'
-{ id: '4XTTMADSKQUN3jkeZngbtuE35w9y5YnDTicVTeeji7N2Npkey:1477063161:0',
-  publisher: '4XTTMADSKQUN3jkeZngbtuE35w9y5YnDTicVTeeji7N2Npkey',
-  namespace: 'scratch.hello',
-  body:
-   { Body:
-      { Simple:
-         { object: 'QmZDxgNgUT1J3rgjvnGjoxoA5efGNSN9Qvhq4FpvefmwnA',
-           refs: [ 'hello_1' ] } } },
-  timestamp: 1477063161,
-  signature: 'Q79Vgp7bl4J7rJo3DOmtueLGqHQpG3lpSyiXbTqX60oOdbPdju06m4epiQNrGLarfCsj2Opa0psX6EWm6BJkDw==' }
-{ id: '4XTTMADSKQUN3jkeZngbtuE35w9y5YnDTicVTeeji7N2Npkey:1477063161:1',
-  publisher: '4XTTMADSKQUN3jkeZngbtuE35w9y5YnDTicVTeeji7N2Npkey',
-  namespace: 'scratch.hello',
-  body:
-   { Body:
-      { Simple:
-         { object: 'QmcdACgobENfs7vuD2CpQGi8RdEkNyAmbmyqVvrA7Z57xu',
-           refs: [ 'hello_2' ] } } },
-  timestamp: 1477063161,
-  signature: 'bN7mAW3JKJAHtInSGM08IXoUx//qFJpySaCWPEe8P6Pm46XxoOrepG2Q2KrIQ5bs5oLKJkU7qHqFI2dQaHETCQ==' }
+{
+  "id": "4XTTMBHnnQ6fW6tFWZHyz5hmypFqm7myypesDgYfDseumD6js:1487797726:2",
+  "publisher": "4XTTMBHnnQ6fW6tFWZHyz5hmypFqm7myypesDgYfDseumD6js",
+  "namespace": "scratch.hello",
+  "body": {
+    "simple": {
+      "object": "QmQQxyUTyuvrbnCqZSvHrkABsyV2ZMRcbGzLmMriFeLgJb",
+      "refs": [
+        "hello:1"
+      ]
+    }
+  },
+  "timestamp": "1487797726",
+  "signature": "D3ACFCg/c8R2vXJbnnI4669i2JNlMdXKs4xy6up0ymQLXE8i9Zey7IvhYKlRef6ivcwTvW2X8/7RWhmB5X3XDA=="
+}
+{
+  "id": "4XTTMBHnnQ6fW6tFWZHyz5hmypFqm7myypesDgYfDseumD6js:1487797726:3",
+  "publisher": "4XTTMBHnnQ6fW6tFWZHyz5hmypFqm7myypesDgYfDseumD6js",
+  "namespace": "scratch.hello",
+  "body": {
+    "simple": {
+      "object": "QmNS1u2hKJbU7ddJiELYSvqZzWsGhb5n8ZAGVovTUUkZ5v",
+      "refs": [
+        "hello:2"
+      ]
+    }
+  },
+  "timestamp": "1487797726",
+  "signature": "UnEirGUHM0Z7cgo7mPpZDY3LTPrP0yJOGbBRCSFLvwK6dap8FJEm+9gg1xiBAtsNKEowHnQNAB0i14HCr/ETCQ=="
+}
+```
 
-$ mcclient getData QmZDxgNgUT1J3rgjvnGjoxoA5efGNSN9Qvhq4FpvefmwnA
-{ id: 'hello_1', hello: 'world' }
+```
+$ cclient getData QmQQxyUTyuvrbnCqZSvHrkABsyV2ZMRcbGzLmMriFeLgJb
+{
+  "id": "1",
+  "hello": "world"
+}
 ```
 
 ## Going Public
