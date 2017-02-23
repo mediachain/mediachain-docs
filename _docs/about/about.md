@@ -62,7 +62,7 @@ A decentralized directory facilitates dataset discovery by allowing users to loo
 
 Some of the namespaces currently live in the Mediachain network:
 ```
-curl -s http://localhost:9002/dir/listns | sort
+$ mcclient listNamespaces
 images.500px
 images.dpla
 images.flickr
